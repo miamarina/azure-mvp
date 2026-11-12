@@ -1,0 +1,44 @@
+{
+  "job": {
+    "id": "vectors-sample",
+    "title": "Vectors — a first look",
+    "locale": "en-US",
+    "source_url": "https://www.youtube.com/watch?v=fNk_zzaMoSs",
+    "source_offset_seconds": 0,
+    "attribution": "3Blue1Brown / Grant Sanderson · Vectors, Chapter 1, Essence of linear algebra · excerpt 00:00–00:55",
+    "duration_seconds": 55,
+    "status": "ready",
+    "stage": "Ready to study",
+    "sample": true,
+    "created_at": "2026-11-09T18:44:29Z"
+  },
+  "transcript": {
+    "duration_seconds": 55,
+    "segments": [
+      {"id": "S0001", "start": 11.31, "end": 15.39, "text": "The fundamental, root of it all building block for linear algebra is the vector."},
+      {"id": "S0002", "start": 15.63, "end": 20.03, "text": "So it's worth making sure that we're all on the same page about what exactly a vector is."},
+      {"id": "S0003", "start": 20.37, "end": 30.21, "text": "You see, broadly speaking, there are three distinct but related ideas about vectors, which I'll call the physics student perspective, the computer science student perspective, and the mathematician's perspective."},
+      {"id": "S0004", "start": 30.77, "end": 34.53, "text": "The physics student perspective is that vectors are arrows pointing in space."},
+      {"id": "S0005", "start": 34.81, "end": 38.93, "text": "What defines a given vector is its length and the direction it's pointing."},
+      {"id": "S0006", "start": 39.17, "end": 43.25, "text": "But as long as those two facts are the same, you can move it all around and it's still the same vector."},
+      {"id": "S0007", "start": 43.92, "end": 50.16, "text": "Vectors that live in the flat plane are two-dimensional, and those sitting in broader space that you and I live in are three-dimensional."},
+      {"id": "S0008", "start": 51.68, "end": 54.99, "text": "The computer science perspective is that vectors are ordered lists"}
+    ]
+  },
+  "notes": {
+    "title": "A first look at vectors",
+    "overview": [
+      {"text": "Vectors are a fundamental building block of linear algebra, with different perspectives in physics, computer science and mathematics.", "segment_ids": ["S0001", "S0003"], "start": 11.31},
+      {"text": "In the physics perspective, a vector is an arrow defined by its length and direction. Moving it without changing either does not change the vector.", "segment_ids": ["S0004", "S0005", "S0006"], "start": 30.77}
+    ],
+    "chapters": [
+      {"title": "Three perspectives on a vector", "start_segment_id": "S0001", "start": 11.31, "segment_index": 0},
+      {"title": "The physics perspective: length and direction", "start_segment_id": "S0004", "start": 30.77, "segment_index": 3},
+      {"title": "A glimpse of the computer science perspective", "start_segment_id": "S0008", "start": 51.68, "segment_index": 7}
+    ],
+    "key_terms": [
+      {"term": "Vector (physics perspective)", "definition": "An arrow in space characterized by its length and the direction in which it points.", "segment_ids": ["S0004", "S0005"], "start": 30.77},
+      {"term": "Two and three dimensions", "definition": "Vectors in a flat plane are two-dimensional; vectors in the surrounding space are three-dimensional.", "segment_ids": ["S0007"], "start": 43.92}
+    ]
+  }
+}

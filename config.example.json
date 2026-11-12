@@ -1,0 +1,10 @@
+{
+  "subscription_id": "YOUR-SUBSCRIPTION-ID",
+  "project_name": "studynotes-yourname",
+  "location": "swedencentral",
+  "hosting": "flex",
+  "max_instances": 2,
+  "max_upload_mib": 200,
+  "max_audio_minutes": 90,
+  "existing_foundry": null
+}

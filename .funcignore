@@ -1,0 +1,14 @@
+.git*
+.github/
+.venv/
+.local/
+tests/
+docs/
+web/
+sample/
+config*.json
+local.settings.json
+manage.py
+README.md
+AGENTS.md
+__pycache__/

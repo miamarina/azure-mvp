@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <title>StudyNotes — From lecture to understanding</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="config.js"></script>
+  <script type="module" src="app.js"></script>
+</head>
+<body>
+  <aside class="sidebar">
+    <a class="brand" href="./"><span class="brand-icon">s</span> StudyNotes<span class="brand-dot">.</span></a>
+    <div class="library-heading"><span class="eyebrow">YOUR LIBRARY</span><span id="lecture-count" class="count">0</span></div>
+    <nav id="library" aria-label="Lectures"><p class="muted small">Loading recordings…</p></nav>
+    <button id="upload-open" class="primary">＋ Add a recording</button>
+    <div class="sidebar-bottom"><span class="status-dot"></span> Group test workspace <span class="version">2.0</span></div>
+  </aside>
+  <div class="workspace">
+    <header class="topbar"><span>Library <span class="slash">/</span> <span id="breadcrumb">Your lectures</span></span><button id="refresh" class="text-button">↻ Refresh library</button></header>
+    <main>
+      <div class="intro"><div><p class="eyebrow">LESS REWATCHING. MORE UNDERSTANDING.</p><h1 id="page-title">Your lectures, ready to study.</h1><p id="page-subtitle" class="muted">The whole explanation, with a path back to every moment.</p></div><button id="download" class="secondary" hidden>↓ Export Markdown</button></div>
+      <label class="search-wrap"><span aria-hidden="true">⌕</span><input id="search" type="search" placeholder="Find an explanation across your lectures…" aria-label="Search all lectures"><kbd>SEARCH</kbd></label>
+      <section id="search-results" hidden aria-live="polite"></section>
+      <section id="empty" class="card empty" hidden><span class="empty-icon">↗</span><h2>A lecture is a good place to start.</h2><p class="muted">Add a recording to get a complete, searchable scriptum with links to the original video.</p><button id="empty-upload" class="primary">Add your first recording →</button></section>
+      <section id="progress-card" class="card progress-card" hidden aria-live="polite"><span class="eyebrow">YOUR SCRIPTUM IS ON ITS WAY</span><h2 id="progress-stage">Waiting for a worker</h2><p id="progress-detail" class="muted">You can keep this page open. The result will appear here.</p><div id="progress-animation" class="progress-animation"></div></section>
+      <div id="reader" class="reader-grid" hidden>
+        <article class="card scriptum-card">
+          <div class="section-heading"><h2>Lecture scriptum</h2><span id="segment-count" class="count"></span></div>
+          <div id="sample-note" class="sample-note" hidden>Saved example · Explore the reader before uploading your own recording.</div>
+          <p class="eyebrow label">THE OVERVIEW</p><ul id="overview" class="overview"></ul>
+          <div class="scriptum-heading"><p class="eyebrow label">THE FULL EXPLANATION</p><span class="muted small">Every spoken passage is kept.</span></div>
+          <div id="chapters"></div>
+          <section id="terms-section" hidden><p class="eyebrow label">KEY TERMS</p><div id="terms" class="terms"></div></section>
+        </article>
+        <aside class="right-column">
+          <section class="card video-card"><div id="video-placeholder" class="video-placeholder"><span class="play-symbol">▶</span><h2>A path back to the source.</h2><p>Select any timestamp to watch the original explanation.</p><button id="load-video" class="video-button">Watch from the beginning ↗</button></div><iframe id="youtube" title="Original lecture video" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen hidden></iframe><video id="video" controls preload="none" hidden></video><div class="video-info"><div class="video-heading"><span class="status-dot"></span><strong id="duration"></strong><span class="muted small">Original recording</span></div><p id="attribution" class="muted small"></p><a id="source-link" target="_blank" rel="noopener noreferrer">Open original source ↗</a></div></section>
+          <section class="card contents-card"><p class="eyebrow">IN THIS LECTURE</p><nav id="contents" aria-label="Chapter navigation"></nav></section>
+          <p class="reading-note">A transcript helps you find the explanation. Check important details against the recording.</p>
+        </aside>
+      </div>
+      <footer>Study at your own pace.<span>Saved notes. Searchable explanations. One less rewatch.</span></footer>
+    </main>
+  </div>
+  <dialog id="upload-dialog">
+    <form id="upload-form">
+      <div class="dialog-heading"><div><p class="eyebrow">MAKE ROOM FOR THE IMPORTANT PARTS</p><h2>Add a recording</h2></div><button id="upload-close" type="button" class="text-button" aria-label="Close">✕</button></div>
+      <p id="upload-hint" class="muted small"></p>
+      <label class="dropzone" for="file"><span>↑</span><strong id="file-label">Choose an audio or video file</strong><small>MP4 · WAV · MP3 · M4A · WebM · OGG · FLAC</small><input id="file" type="file" accept=".mp4,.wav,.mp3,.m4a,.webm,.ogg,.flac" required></label>
+      <label for="lecture-title">Lecture title</label><input id="lecture-title" maxlength="160" required placeholder="e.g. Introduction to vectors">
+      <label for="source">Original video or audio URL</label><input id="source" type="url" required placeholder="YouTube link or direct media URL"><p class="field-hint">Timestamp links will return to this recording.</p>
+      <div class="form-row"><div><label for="locale">Spoken language</label><select id="locale"><option value="en-US">English</option><option value="de-DE">German</option></select></div><div><label for="source-offset">Excerpt starts at (seconds)</label><input id="source-offset" type="number" min="0" max="86400" value="0" step="0.001"></div></div>
+      <label for="credit">Creator / attribution <span class="muted">(optional)</span></label><input id="credit" maxlength="1000" placeholder="Credit the lecturer or creator">
+      <details><summary>Experiment settings</summary><label for="trial">Trial ID <span class="muted">(optional)</span></label><input id="trial" maxlength="80" pattern="[A-Za-z0-9_-]*" placeholder="e.g. latency-run-01"><p class="field-hint">Leave blank to reuse duplicate uploads. A new ID deliberately runs processing again and can incur AI costs.</p></details>
+      <p id="upload-error" class="error" role="alert"></p><button id="upload-submit" class="primary" type="submit">Create scriptum →</button>
+    </form>
+  </dialog>
+  <div id="toast" class="toast" role="status" hidden></div>
+</body>
+</html>

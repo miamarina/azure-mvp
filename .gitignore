@@ -1,0 +1,12 @@
+.venv/
+.local/
+.env
+.env.*
+config.json
+local.settings.json
+.python_packages/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+node_modules/
+.DS_Store
